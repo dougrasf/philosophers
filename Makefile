@@ -7,7 +7,8 @@ INC = -I ./include
 SRC = \
 			./src/main.c \
 			./src/utils.c \
-			./src/actions.c
+			./src/actions.c \
+			./src/init.c
 
 OBJS = $(SRC:.c=.o)
 
