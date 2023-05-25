@@ -6,21 +6,21 @@
 /*   By: dofranci <dofranci@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:38:58 by dofranci          #+#    #+#             */
-/*   Updated: 2023/05/17 20:08:01 by dofranci         ###   ########.fr       */
+/*   Updated: 2023/05/25 20:17:28 by dofranci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-long int    timestamp(long int init_time)
+long int	timestamp(long int init_time)
 {
-    struct timeval    tv;
+	struct timeval	tv;
 
-    gettimeofday(&tv, NULL);
-    if (init_time == 0)
-        return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
-    else
-        return ((tv.tv_sec * 1000 + tv.tv_usec / 1000) - init_time);
+	gettimeofday(&tv, NULL);
+	if (init_time == 0)
+		return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
+	else
+		return ((tv.tv_sec * 1000 + tv.tv_usec / 1000) - init_time);
 }
 
 static int	ft_isdigit(int c)
@@ -38,8 +38,8 @@ int	ft_atoi(const char *str)
 
 	result = 0;
 	negative = 1;
-	if(!str)
-		return(-1);
+	if (!str)
+		return (-1);
 	while ((*str >= '\t' && *str <= '\r') || *str == ' ')
 		str++;
 	if (*str == '-' || *str == '+')
@@ -56,9 +56,9 @@ int	ft_atoi(const char *str)
 	return (result * negative);
 }
 
-static int is_valid_value(int argc, char *argv[])
+static int	valid_value(int argc, char *argv[])
 {
-    int	i;
+	int	i;
 	int	j;
 
 	i = 0;
@@ -76,22 +76,27 @@ static int is_valid_value(int argc, char *argv[])
 			}
 		}
 	}
+	if (ft_atoi(argv[1]) == 1)
+	{
+		printf("0 1 has taken a fork\n%s 1 died\n", argv[2]);
+		return (TRUE);
+	}
 	return (FALSE);
 }
 
-int validate_args(int argc, char *argv[])
+int	validate_args(int argc, char *argv[])
 {
-    if(argc > 6)
-    {
-	    printf("Exceeded number of arguments!\n");
+	if (argc > 6)
+	{
+		printf("Exceeded number of arguments!\n");
 		return (TRUE);
 	}
-	if(argc < 5)
+	if (argc < 5)
 	{
-        printf("Insuficient number of arguments!\n");
-		return(TRUE);
+		printf("Insuficient number of arguments!\n");
+		return (TRUE);
 	}
-	if(is_valid_value(argc, argv))
-		return(TRUE);
-	return(FALSE);
+	if (valid_value(argc, argv))
+		return (TRUE);
+	return (FALSE);
 }

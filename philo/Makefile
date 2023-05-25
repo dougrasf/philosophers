@@ -2,13 +2,12 @@ FLAG = -Wall -Wextra -Werror -lpthread
 
 NAME = philo
 
-INC = -I ./include
-
 SRC = \
-			./src/main.c \
-			./src/utils.c \
-			./src/actions.c \
-			./src/init.c
+			main.c \
+			utils.c \
+			actions.c \
+			init.c \
+			threads.c
 
 OBJS = $(SRC:.c=.o)
 
@@ -17,7 +16,7 @@ CC = cc
 all: $(NAME)
 
 $(NAME):	$(SRC)
-	$(CC) $(FLAG) $(SRC) $(INC) -o $(NAME)
+	$(CC) $(FLAG) $(SRC) -o $(NAME)
 
 clean: 
 	rm -f $(OBJS)
