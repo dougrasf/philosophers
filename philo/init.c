@@ -6,7 +6,7 @@
 /*   By: dofranci <dofranci@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 20:33:57 by dofranci          #+#    #+#             */
-/*   Updated: 2023/05/25 20:22:31 by dofranci         ###   ########.fr       */
+/*   Updated: 2023/05/25 20:41:40 by dofranci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	init_time(t_data *data, char *argv[], int i)
 {
 	data->philo[i]->time = malloc(sizeof(t_time));
-	data->philo[i]->max_meals = -1;
 	data->philo[i]->time->birth = timestamp(0);
 	data->philo[i]->time->last_meal = timestamp(0);
 	data->philo[i]->time->die = ft_atoi(argv[2]);
@@ -37,6 +36,7 @@ void	init_data(int argc, char *argv[], t_data *data)
 	while (++i < data->nop)
 	{
 		data->philo[i] = malloc(sizeof(t_philo));
+		data->philo[i]->max_meals = -1;
 		data->philo[i]->nop = data->nop;
 		data->philo[i]->dead = FALSE;
 		data->philo[i]->id = i + 1;

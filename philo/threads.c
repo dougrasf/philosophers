@@ -6,7 +6,7 @@
 /*   By: dofranci <dofranci@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:02:53 by dofranci          #+#    #+#             */
-/*   Updated: 2023/05/25 20:22:05 by dofranci         ###   ########.fr       */
+/*   Updated: 2023/05/25 20:41:20 by dofranci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ static void	*monitor(void *arg)
 				timestamp(data->philo[id]->time->birth), data->philo[id]->id);
 				return (NULL);
 			}
-			else if (data->philo[id]->max_meals != -1 && data->philo[id]->meals \
-			>= data->philo[id]->max_meals)
+			else if (data->philo[id]->max_meals != -1 \
+			&& data->philo[id]->meals >= data->philo[id]->max_meals)
 				return (NULL);
 		}
 		usleep(5000);
